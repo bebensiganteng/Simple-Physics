@@ -10,6 +10,7 @@
 #define __emptyExample__collision__
 
 #include <iostream>
+#include "ofMain.h"
 #include "vector.h"
 #include "behaviour.h"
 #include "particle.h"
@@ -21,8 +22,6 @@ class Collision:public Behaviour {
     
         Particle *pool;
         Vector delta;
-    
-        void setup();
     
 };
 

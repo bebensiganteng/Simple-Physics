@@ -11,18 +11,29 @@
 
 void Euler::integrate(Particle p, float drag) {
     
-    Vector vel = *new Vector();
+    Vector vel;
+    
+    float dt = 1.0/6.0;
     
     //cout << "Euler::integrate -> " << Demo::NUM_PARTICLES << endl;
     
     if (!p.fixed) {
+    
+        p.oldpos.pos->copy(p.pos->x, p.pos->y);
         
-        //p.acc->scale(1);
+        p.acc->scale(p.massInv);
         
-        p.pos->add(*p.acc);
+        vel.copy(p.vel->x, p.vel->y);
         
-        //p.acc->clear();
-        //cout << p.acc->x << " " << p.acc->y << endl;
+        p.acc->scale(dt);
+        p.vel->add(*p.acc);
+        
+        vel.scale(dt);
+        p.pos->add(vel);
+        
+        p.acc->clear();
+        
+        
     }
     
 }

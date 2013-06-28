@@ -9,8 +9,9 @@
 #include "demo.h"
 
 #define DOT_SIZE 5
+#define MASS 20
 
-short Demo::NUM_PARTICLES = 100;
+short Demo::NUM_PARTICLES = 2;
 
 short Demo::CLOTH_SIZE = 10;
 short Demo::CLOTH_ROW = 50;
@@ -28,8 +29,8 @@ void Demo::setupAttraction() {
     // add attraction
     attraction.setup(*mouse.pos, 1200, 1200);
     
-    // add collision
-    collision.setup();
+    // add repulsion
+    repulsion.setup(*mouse.pos, 200, -2000);
     
     max.set(ofGetWindowWidth(), ofGetWindowHeight());
     
@@ -37,34 +38,38 @@ void Demo::setupAttraction() {
     
     // Push all the behaviour
     physic.vBehaviour.push_back(&attraction);
+    physic.vBehaviour.push_back(&repulsion);
     physic.vBehaviour.push_back(&bounds);
-    //physic.vBehaviour.push_back(&collision);
+    physic.vBehaviour.push_back(&collision);
     
     // add integrator
-    physic.integrator = new Euler();
+    physic.integrator = new Verlet();
+    //physic.integrator = new Euler();
     
     // Add objects
     physic.particles = new Particle[NUM_PARTICLES];
-    
-    // add particles to the pool for vector look-up
-    collision.pool = physic.particles;
-    
+        
     for (short i = 0; i < NUM_PARTICLES; i++) {
         
         physic.particles[i].fixed = false;
         
-        physic.particles[i].pos = new Vector(
+        physic.particles[i].pos = new Vector();        
+        physic.particles[i].acc = new Vector();
+        physic.particles[i].vel = new Vector();
+        
+        physic.particles[i].moveTo(
             ofRandom(ofGetWindowWidth()),
             ofRandom(ofGetWindowHeight())
         );
         
-        physic.particles[i].acc = new Vector();
-        physic.particles[i].vel = new Vector();
-        
-        physic.particles[i].setMass(ofRandom(5));
-        physic.particles[i].setRadius(physic.particles[i].mass * 10);
+        physic.particles[i].setMass(ofRandom(MASS));
+        physic.particles[i].setRadius(physic.particles[i].mass * 4);
         
     }
+    
+    // add particles to the pool for vector look-up
+    collision.pool = physic.particles;
+
 }
 
 void Demo::setupVerlet() {
@@ -180,10 +185,7 @@ void Demo::step() {
     
     physic.step(NUM_PARTICLES);
     
-    force.g.x = 50 * sin(0.0005 * scount++);
-    //force.g.x = 50 * scount++;
-    
-   
+    //force.g.x = 50 * sin(0.0005 * scount++);
 }
 
 

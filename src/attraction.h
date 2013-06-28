@@ -18,7 +18,7 @@ class Attraction:public Behaviour {
     public:
     
         Vector *target;
-        Vector *delta;
+        Vector delta;
     
         float radius;
         float radiusSq;

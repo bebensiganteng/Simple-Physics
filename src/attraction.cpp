@@ -15,23 +15,22 @@ void Attraction::setup(Vector &_target, float _radius = 1000, float _strength = 
     radiusSq = radius * radius;
     
     strength = _strength;
-    delta = new Vector();
 }
 
 void Attraction::apply(Particle p, Vector dt, short index) {
     
-    delta->copy(target->x, target->y);
-    delta->sub(*p.pos);
+    delta.copy(target->x, target->y);
+    delta.sub(*p.pos);
     
-    int distSq = delta->magSq();
+    int distSq = delta.magSq();
     
     if (distSq < radiusSq && distSq > 0.000001) {
-        delta->norm();
-        delta->scale(1.0 - distSq / radiusSq);
+        delta.norm();
         
-        p.acc->add(*delta);
+        delta.scale(1.0 - distSq / radiusSq);
         
-        
+        delta.scale(strength);
+        p.acc->add(delta);        
     }
     
     

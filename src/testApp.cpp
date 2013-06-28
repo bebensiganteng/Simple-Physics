@@ -10,10 +10,10 @@ void testApp::setup(){
     ofSetFrameRate(30);
     
     // For attraction demo
-   // demo.setupAttraction();
+    demo.setupAttraction();
     
     // For verlet demo
-    demo.setupVerlet();
+    //demo.setupVerlet();
 }
 
 //--------------------------------------------------------------
@@ -45,13 +45,10 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    cout << "keypressed " << (char)key << endl;
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-    cout << "keyReleased " << (char)key << endl;
-
 }
 
 //--------------------------------------------------------------

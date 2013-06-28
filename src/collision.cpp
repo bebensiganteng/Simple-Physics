@@ -9,42 +9,41 @@
 #include "collision.h"
 #include "demo.h"
 
-void Collision::setup() {
-    
-}
-
 void Collision::apply(Particle p, Vector dt, short index) {
+    
     for (short i = 0; i < Demo::NUM_PARTICLES; i++) {
-        //cout << "TEST: " << pool[i].p_id << endl;
+    
         
         if (pool[i].p_id != p.p_id) {
             
-            delta.copy(pool[i].pos->x, pool[i].pos->y);
-            delta.sub(*p.pos);
+            ofVec2f p1(p.pos->x, p.pos->y);
+            ofVec2f p2(pool[i].pos->x, pool[i].pos->y);
             
-            float distSq = delta.magSq();
+            float distance = p1.distance(p2);
             
-            float radii = p.radius + pool[i].radius;
+            float rad = p.radius + pool[i].radius;
             
-            if (distSq <= radii * radii) {
-                //cout << "overalaped: " << p.p_id << endl;
+            //cout << distance << endl;
+            
+            if (distance <= rad) {
                 
-                float dist = delta.mag();
+                //p1.normalize();
+                //p2.normalize();
                 
-                float overlap = (p.radius + pool[i].radius) - dist;
+                //float dot = p1.dot(p2);
                 
-                Vector v1 = delta.clone();
+                //cout << "dot: " << dot << endl;
+                
+                Vector v1;
+                
+                v1.copy(p.pos->x, p.pos->y);
                 v1.norm();
-                v1.scale(overlap * -0.5);
+                v1.scale(-1);
+                
+                cout << v1.x << " " << v1.y << endl;
                 p.pos->add(v1);
-                
-                delta.norm();
-                delta.scale(overlap * 0.5);
-                pool[i].pos->add(delta);
-                
-                
             }
-            
+        
         }
     }
     

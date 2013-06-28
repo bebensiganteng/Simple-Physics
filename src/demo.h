@@ -54,6 +54,8 @@ class Demo {
         double scount;
         
         Attraction attraction;
+        Attraction repulsion;
+    
         EdgeBounce bounds;
         Collision collision;
         Force force;

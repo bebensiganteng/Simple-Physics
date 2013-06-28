@@ -1,6 +1,9 @@
 //
 //  vector.cpp
-//  myFirstApp
+//  simplePhysics
+//
+//  in openframeworks there's already a class for vector2d
+//  http://www.openframeworks.cc/documentation/math/
 //
 //  Created by Rachmad Hidayat on 6/25/13.
 //

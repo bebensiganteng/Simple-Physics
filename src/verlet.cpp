@@ -15,7 +15,8 @@ void Verlet::integrate(Particle p, float drag) {
     
     Vector pos;
     
-    float dtSq = (1.0/60) * (1.0/6.0);
+    float dt = 1.0/60;
+    float dtSq = dt * dt;
     
     if (!p.fixed) {
                 

@@ -1,6 +1,6 @@
 //
 //  vector.h
-//  myFirstApp
+//  simplePhysics
 //
 //  Created by Rachmad Hidayat on 6/25/13.
 //
