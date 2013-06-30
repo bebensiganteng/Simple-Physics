@@ -15,9 +15,7 @@ Particle::Particle () {
     
     //cout << "Particle: " << p_id << endl;
     
-    //oldpos->(*new Vector());
-    //oldpos.setPos(*new Vector());
-    
+    // TODO: add some cute color
     r = ofRandom(255);
     g = ofRandom(255);
     b = ofRandom(255);
@@ -29,6 +27,8 @@ Particle::Particle () {
 
 //Particle::~Particle() {
 //    delete pos;
+//    delete acc;
+//    delete vel;
 //}
 
 //void Particle::setPos(Vector &_pos) {
@@ -37,8 +37,8 @@ Particle::Particle () {
 
 void Particle::moveTo(float x, float y) {
     
-    pos->copy(x, y);
-    oldpos.pos->copy(x, y);
+    pos->set(x, y);
+    oldpos.pos->set(x, y);
     
     //cout << "x: " << oldpos.pos->x << " y: " << oldpos.pos->y << endl;
 }

@@ -22,8 +22,8 @@ void Spring::setup(Particle _p1, Particle _p2, float _r = 100, float _s = 1.0) {
 
 void Spring::apply() {
      
-    delta.copy(p2.pos->x, p2.pos->y);
-    delta.sub(*p1.pos);
+    delta.set(p2.pos->x, p2.pos->y);
+    delta.operator-=(*p1.pos);
     
     float dist = delta.mag() + 0.000001;    
     float force = (dist - restlength) / (dist * (p1.massInv + p2.massInv)) * stiffness;
@@ -35,13 +35,13 @@ void Spring::apply() {
         Vector d1 = delta.clone();
         d1.scale(force * p1.massInv);
         
-        p1.pos->add(d1);
+        p1.pos->operator+=(d1);
     }
     
     if (!p2.fixed) {
         
         delta.scale(-force * p2.massInv);
         
-        p2.pos->add(delta);
+        p2.pos->operator+=(delta);
     }
 }

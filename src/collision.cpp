@@ -36,12 +36,12 @@ void Collision::apply(Particle p, Vector dt, short index) {
                 
                 Vector v1;
                 
-                v1.copy(p.pos->x, p.pos->y);
-                v1.norm();
+                v1.set(p.pos->x, p.pos->y);
+                v1.normalize();
                 v1.scale(-1);
                 
-                cout << v1.x << " " << v1.y << endl;
-                p.pos->add(v1);
+                //cout << v1.x << " " << v1.y << endl;
+                p.pos->operator+=(v1);
             }
         
         }

@@ -10,7 +10,5 @@
 
 
 void Force::apply(Particle p, Vector dt, short index) {
-    p.acc->add(g);
-    
-    //cout << "Force::apply-> " << g.x << endl;
+    p.acc->operator+=(g);
 }

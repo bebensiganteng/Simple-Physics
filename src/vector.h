@@ -13,29 +13,17 @@
 #include <math.h>
 #include "ofMain.h"
 
-class Vector {
+class Vector:public ofVec2f {
     public:
-        float x;
-        float y;
-    
-        Vector(float nX = 0, float nY = 0) { set(nX, nY); }
-    
-        void add(Vector v);
-        void sub(Vector v);
-        void set(float nX, float nY);
-        void clear();
-    
-        void scale(float val);
-        float dot(Vector v);
-    
+
         float mag();
         float magSq();
+        float cross(Vector v);
     
-        Vector cross(Vector v);
-        Vector copy(float nX, float nY);
-    
-        Vector norm();
         Vector clone();
+    
+        void clear();
+
 };
 
 #endif /* defined(__myFirstApp__vector__) */

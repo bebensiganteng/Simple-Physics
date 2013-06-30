@@ -12,5 +12,4 @@
 *.la
 *.a
 
-bin/
-DerivedData/
+/bin

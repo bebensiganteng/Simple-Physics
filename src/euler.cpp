@@ -19,17 +19,17 @@ void Euler::integrate(Particle p, float drag) {
     
     if (!p.fixed) {
     
-        p.oldpos.pos->copy(p.pos->x, p.pos->y);
+        p.oldpos.pos->set(p.pos->x, p.pos->y);
         
         p.acc->scale(p.massInv);
         
-        vel.copy(p.vel->x, p.vel->y);
+        vel.set(p.vel->x, p.vel->y);
         
         p.acc->scale(dt);
-        p.vel->add(*p.acc);
+        p.vel->operator+=(*p.acc);
         
         vel.scale(dt);
-        p.pos->add(vel);
+        p.pos->operator+=(vel);
         
         p.acc->clear();
         

@@ -22,21 +22,21 @@ void Verlet::integrate(Particle p, float drag) {
                 
         p.acc->scale(p.massInv);
         
-        p.vel->copy(p.pos->x, p.pos->y);
-        p.vel->sub(*p.oldpos.pos);
+        p.vel->set(p.pos->x, p.pos->y);
+        p.vel->operator-=(*p.oldpos.pos);
         
 
         p.acc->scale(dtSq);
-        p.vel->add(*p.acc);
+        p.vel->operator+=(*p.acc);
         
-        pos.copy(p.pos->x, p.pos->y);
-        pos.add(*p.vel);
+        pos.set(p.pos->x, p.pos->y);
+        pos.operator+=(*p.vel);
         
         //cout << pos.x << " " << pos.y << endl;
         
-        p.oldpos.pos->copy(p.pos->x, p.pos->y);
+        p.oldpos.pos->set(p.pos->x, p.pos->y);
         
-        p.pos->copy(pos.x, pos.y);
+        p.pos->set(pos.x, pos.y);
         
         p.acc->clear();
         

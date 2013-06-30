@@ -19,7 +19,7 @@ short Demo::CLOTH_COLS = 50;
 
 Demo::Demo() {
     mouse.fixed = true;
-    mouse.pos = new Vector(0,0);
+    mouse.pos = new Vector();
     
     scount = 0;
 }
@@ -75,7 +75,7 @@ void Demo::setupAttraction() {
 void Demo::setupVerlet() {
     
     physic.integrator = new Verlet();
-    physic.timeStep = 1.0/200;
+    //physic.timeStep = 1.0/200;
     
     mouse.setMass(10);
     
@@ -184,6 +184,7 @@ void Demo::setupVerlet() {
 void Demo::step() {
     
     physic.step(NUM_PARTICLES);
+    
     
     //force.g.x = 50 * sin(0.0005 * scount++);
 }

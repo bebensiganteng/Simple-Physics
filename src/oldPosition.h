@@ -16,9 +16,9 @@
 class OldPosition {
     public:
     
-    Vector* pos;
-    Vector* vel;
-    Vector* acc;
+        Vector* pos;
+        Vector* vel;
+        Vector* acc;
 
         
 };

@@ -10,10 +10,10 @@ void testApp::setup(){
     ofSetFrameRate(30);
     
     // For attraction demo
-    demo.setupAttraction();
+    //demo.setupAttraction();
     
     // For verlet demo
-    //demo.setupVerlet();
+    demo.setupVerlet();
 }
 
 //--------------------------------------------------------------
