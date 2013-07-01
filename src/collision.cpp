@@ -14,34 +14,42 @@ void Collision::apply(Particle p, Vector dt, short index) {
     for (short i = 0; i < Demo::NUM_PARTICLES; i++) {
     
         
+        
         if (pool[i].p_id != p.p_id) {
             
-            ofVec2f p1(p.pos->x, p.pos->y);
-            ofVec2f p2(pool[i].pos->x, pool[i].pos->y);
+            Vector delta;
             
-            float distance = p1.distance(p2);
-            
-            float rad = p.radius + pool[i].radius;
-            
-            //cout << distance << endl;
+            delta.set(pool[i].pos->x, pool[i].pos->y);
+            delta.operator-=(*p.pos);
+                        
+            float distance  = p.pos->distance(*pool[i].pos);
+            float rad       = p.radius + pool[i].radius;
             
             if (distance <= rad) {
                 
-                //p1.normalize();
-                //p2.normalize();
+               //cout << "overlap" << endl;
                 
-                //float dot = p1.dot(p2);
+                float dist = delta.length();
                 
-                //cout << "dot: " << dot << endl;
+                float o = (p.radius + pool[i].radius) - dist;
                 
-                Vector v1;
                 
-                v1.set(p.pos->x, p.pos->y);
-                v1.normalize();
-                v1.scale(-1);
+                //cout << o << " " << dist << endl;
                 
-                //cout << v1.x << " " << v1.y << endl;
-                p.pos->operator+=(v1);
+                float mt = p.mass + pool[i].mass;
+                
+                float r1 = pool[i].mass / mt;
+                float r2 = p.mass / mt;
+                
+                Vector v = delta.clone();
+                v.normalize();
+                v.operator*=(o * -r1);
+                p.pos->operator+(v);                
+                
+                delta.normalize();
+                delta.operator*=(o * r2);
+                
+                pool[i].pos->operator+=(delta);
             }
         
         }

@@ -13,10 +13,20 @@ short Particle::GUID = 0;
 Particle::Particle () {
     p_id = GUID++;
     
-    // TODO: add some cute color
-    r = ofRandom(255);
-    g = ofRandom(255);
-    b = ofRandom(255);
+    // kawaii colors
+    int pallete[5] = {
+        0xFD2662,
+        0xFF4391,
+        0xFFBADC,
+        0xFFA2CA,
+        0xEABBA9
+    };
+    
+    int d = floor(ofRandom(5));
+    
+    //cout << pallete[d]  << endl;
+    
+    colors = pallete[d];
     
     oldpos.pos = new Vector();
     oldpos.acc = new Vector();

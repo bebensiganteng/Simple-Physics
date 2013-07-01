@@ -13,16 +13,6 @@ void App::setup(){
     // For verlet demo
     demo.setupVerlet();
     
-    Vector test;
-//
-    test.set(10,10);
-    
-    Vector d = test.clone();
-    
-    cout << "D: " << d.x << " " << d.y << endl;
-//
-//    cout << "--> " << test.length() << endl;
-//    cout << "lengthSquared: " << test.lengthSquared() << endl;
 }
 
 //--------------------------------------------------------------
@@ -36,11 +26,8 @@ void App::draw(){
     ofBackground(ofColor::black);
     
     for (short i = 0; i < demo.NUM_PARTICLES; i++) {
-        ofSetColor(
-            demo.physic.particles[i].r,
-            demo.physic.particles[i].g,
-            demo.physic.particles[i].b
-        );
+
+        ofSetHexColor(demo.physic.particles[i].colors);
         
         ofCircle(
             demo.physic.particles[i].pos->x,

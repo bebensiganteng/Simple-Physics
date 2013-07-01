@@ -10,6 +10,7 @@
 #define __myFirstApp__particle__
 
 #include <iostream>
+#include <math.h>
 #include "ofMain.h"
 #include "vector.h"
 #include "oldPosition.h"
@@ -28,9 +29,7 @@ class Particle {
         float massInv;
     
         short p_id;
-        short r;
-        short g;
-        short b;
+        int colors;
     
         Vector *pos;
         Vector *acc;

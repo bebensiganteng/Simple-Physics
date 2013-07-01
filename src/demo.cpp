@@ -11,11 +11,11 @@
 #define DOT_SIZE 5
 #define MASS 10
 
-short Demo::NUM_PARTICLES = 100;
+short Demo::NUM_PARTICLES   = 100;
 
-short Demo::CLOTH_SIZE = 10;
-short Demo::CLOTH_ROW = 50;
-short Demo::CLOTH_COLS = 50;
+short Demo::CLOTH_SIZE      = 10;
+short Demo::CLOTH_ROW       = 50;
+short Demo::CLOTH_COLS      = 50;
 
 Demo::Demo() {
     
@@ -40,9 +40,9 @@ void Demo::setupAttraction() {
     
     // Push all the behaviour
     physic.vBehaviour.push_back(&attraction);
-    //physic.vBehaviour.push_back(&repulsion);
+    physic.vBehaviour.push_back(&repulsion);
     physic.vBehaviour.push_back(&bounds);
-    //physic.vBehaviour.push_back(&collision);
+    physic.vBehaviour.push_back(&collision);
     
     // add integrator
     physic.integrator = new Verlet();
@@ -64,7 +64,7 @@ void Demo::setupAttraction() {
             ofRandom(ofGetWindowHeight())
         );
         
-        physic.particles[i].setMass(ofRandom(MASS));
+        physic.particles[i].setMass(ofRandom(1, MASS));
         physic.particles[i].setRadius(physic.particles[i].mass * 4);
         
     }
@@ -77,7 +77,6 @@ void Demo::setupAttraction() {
 void Demo::setupVerlet() {
     
     physic.integrator = new Verlet();
-    //physic.timeStep = 1.0/200;
     
     mouse.setMass(10);
     
@@ -189,7 +188,8 @@ void Demo::step() {
     
     physic.step(NUM_PARTICLES);
     
-    //force.g.x = 50 * sin(0.0005 * scount++);
+//    some variations for Verlet
+    force.g.x = 50 * sin(0.005 * scount++);
 }
 
 

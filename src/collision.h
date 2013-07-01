@@ -21,7 +21,6 @@ class Collision:public Behaviour {
         void apply(Particle p, Vector dt, short index);
     
         Particle *pool;
-        Vector delta;
     
 };
 
