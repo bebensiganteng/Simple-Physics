@@ -9,19 +9,21 @@
 #include "demo.h"
 
 #define DOT_SIZE 5
-#define MASS 20
+#define MASS 10
 
-short Demo::NUM_PARTICLES = 2;
+short Demo::NUM_PARTICLES = 100;
 
 short Demo::CLOTH_SIZE = 10;
 short Demo::CLOTH_ROW = 50;
 short Demo::CLOTH_COLS = 50;
 
 Demo::Demo() {
-    mouse.fixed = true;
-    mouse.pos = new Vector();
     
-    scount = 0;
+    mouse.fixed = true;
+    mouse.pos   = new Vector();
+    
+    scount      = 0;
+    
 }
 
 void Demo::setupAttraction() {
@@ -38,9 +40,9 @@ void Demo::setupAttraction() {
     
     // Push all the behaviour
     physic.vBehaviour.push_back(&attraction);
-    physic.vBehaviour.push_back(&repulsion);
+    //physic.vBehaviour.push_back(&repulsion);
     physic.vBehaviour.push_back(&bounds);
-    physic.vBehaviour.push_back(&collision);
+    //physic.vBehaviour.push_back(&collision);
     
     // add integrator
     physic.integrator = new Verlet();
@@ -56,7 +58,7 @@ void Demo::setupAttraction() {
         physic.particles[i].pos = new Vector();        
         physic.particles[i].acc = new Vector();
         physic.particles[i].vel = new Vector();
-        
+                
         physic.particles[i].moveTo(
             ofRandom(ofGetWindowWidth()),
             ofRandom(ofGetWindowHeight())
@@ -120,7 +122,7 @@ void Demo::setupVerlet() {
             physic.particles[count].setMass(10);
             
             row.push_back(physic.particles[count]);
-                                    
+            
             count++;
             
         }
@@ -130,6 +132,8 @@ void Demo::setupVerlet() {
     }
     
     count = 0;
+    
+    //cout << vParticle.size() << " " << vParticle[0].size() << endl;
     
     for (x = 0; x < vParticle.size(); x++) {
         
@@ -184,7 +188,6 @@ void Demo::setupVerlet() {
 void Demo::step() {
     
     physic.step(NUM_PARTICLES);
-    
     
     //force.g.x = 50 * sin(0.0005 * scount++);
 }

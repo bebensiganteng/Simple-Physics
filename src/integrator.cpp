@@ -8,4 +8,4 @@
 
 #include "integrator.h"
 
-void Integrator::integrate(Particle p, float drag) {}
+void Integrator::integrate(Particle p, float dt, float drag) {}

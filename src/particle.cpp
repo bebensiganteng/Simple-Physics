@@ -13,8 +13,6 @@ short Particle::GUID = 0;
 Particle::Particle () {
     p_id = GUID++;
     
-    //cout << "Particle: " << p_id << endl;
-    
     // TODO: add some cute color
     r = ofRandom(255);
     g = ofRandom(255);
@@ -40,21 +38,22 @@ void Particle::moveTo(float x, float y) {
     pos->set(x, y);
     oldpos.pos->set(x, y);
     
-    //cout << "x: " << oldpos.pos->x << " y: " << oldpos.pos->y << endl;
+    //cout << "Particle::moveTo-> " << oldpos.pos->x << " " << oldpos.pos->y << endl;
+    
+
 }
 
 void Particle::setMass(float _mass = 1.0) {
-    mass = _mass;
+    
+    mass    = _mass;
     massInv = 1.0/mass;
+    
 }
 
 void Particle::setRadius(float _radius = 1.0) {
-    radius = _radius;
-    radiusSq = radius * radius;
+    
+    radius      = _radius;
+    radiusSq    = radius * radius;
+    
 }
 
-//void Particle::update(int dt, short index) {
-//    if (!fixed) {
-//        //
-//    }
-//}

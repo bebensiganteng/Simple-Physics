@@ -9,6 +9,8 @@
 #include "physics.h"
 #include "demo.h"
 
+#define DT 1.0/60
+
 Physics::Physics () {
     viscosity = 0.005;
 }
@@ -27,7 +29,7 @@ void Physics::step(short pLength) {
         
         };
         
-        integrator->integrate(particles[i], drag);
+        integrator->integrate(particles[i], DT, drag);
     }
     
 

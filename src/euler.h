@@ -16,7 +16,7 @@
 
 class Euler:public Integrator {
     public:
-        void integrate(Particle p, float drag);
+        void integrate(Particle p, float dt, float drag);
 };
 
 #endif /* defined(__emptyExample__euler__) */

@@ -15,7 +15,7 @@
 
 class Verlet:public Integrator {
     public:
-        void integrate(Particle p, float drag);
+        void integrate(Particle p, float dt, float drag);
 };
 
 #endif /* defined(__emptyExample__verlet__) */

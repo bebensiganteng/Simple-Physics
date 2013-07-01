@@ -52,7 +52,6 @@ class Particle {
     
         void setMass(float);
         void setRadius(float);
-        //void update(int dt, short index);
     
 };
 

@@ -22,17 +22,21 @@ void Attraction::apply(Particle p, Vector dt, short index) {
     delta.set(target->x, target->y);
     delta.operator-=(*p.pos);
     
-//    int distSq = delta.magSq();
-//    
-//    if (distSq < radiusSq && distSq > 0.000001) {
-//        delta.normalize();
-//        
-//        delta.scale(1.0 - distSq / radiusSq);
-//        
-//        delta.scale(strength);
-//        p.acc->operator+=(delta);
-//    }
-//    
-//    
-//    
+    int distSq = delta.lengthSquared();
+
+    
+    if (distSq < radiusSq && distSq > 0.000001) {
+        
+        delta.normalize();
+        
+        delta.operator*=(1.0 - distSq / radiusSq);
+        
+        delta.operator*=(strength);
+        p.acc->operator+=(delta);
+        
+        //cout << p.acc->x << " " << p.acc->y << endl;
+    }
+    
+    
+    
 }

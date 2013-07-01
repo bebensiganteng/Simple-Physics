@@ -14,7 +14,7 @@
 
 class Integrator {
     public:
-        virtual void integrate(Particle p, float drag);
+        virtual void integrate(Particle p, float dt,  float drag);
 };
 
 #endif /* defined(__emptyExample__integrator__) */

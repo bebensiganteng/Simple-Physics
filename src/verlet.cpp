@@ -11,35 +11,37 @@
 // v = x - ox
 // x = x + (v + a * dt * dt)
 
-void Verlet::integrate(Particle p, float drag) {
+void Verlet::integrate(Particle p, float dt, float drag) {
     
     Vector pos;
     
-    float dt = 1.0/60;
     float dtSq = dt * dt;
     
     if (!p.fixed) {
-                
-        p.acc->scale(p.massInv);
         
+        // Scale force to mass
+        p.acc->operator*=(p.massInv);
+        
+        // Derive velocity
         p.vel->set(p.pos->x, p.pos->y);
         p.vel->operator-=(*p.oldpos.pos);
         
-
-        p.acc->scale(dtSq);
-        p.vel->operator+=(*p.acc);
+        //if(drag)
         
+        // apply forces to new pos
+        p.acc->operator*=(dtSq);
+        p.vel->operator+=(*p.acc);
+
         pos.set(p.pos->x, p.pos->y);
         pos.operator+=(*p.vel);
-        
-        //cout << pos.x << " " << pos.y << endl;
-        
+
         p.oldpos.pos->set(p.pos->x, p.pos->y);
-        
+
         p.pos->set(pos.x, pos.y);
         
         p.acc->clear();
         
     }
+
     
 }
