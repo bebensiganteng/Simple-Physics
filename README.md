@@ -3,9 +3,9 @@ simplephysics
 
 Simple Physics with OpenFrameworks
 
-This is my personal experiment based on a very simple equation.
+This is just my personal experiment based on a very simple equation.
 
-There's a lot of robust C++ physic engine out there such as
+There's a lot of robust C++ physics engine out there such as
 - http://bulletphysics.org/wordpress/
 - http://box2d.org/
 
