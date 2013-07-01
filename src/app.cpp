@@ -13,7 +13,16 @@ void App::setup(){
     // For verlet demo
     demo.setupVerlet();
     
+    Vector test;
+//
+    test.set(10,10);
     
+    Vector d = test.clone();
+    
+    cout << "D: " << d.x << " " << d.y << endl;
+//
+//    cout << "--> " << test.length() << endl;
+//    cout << "lengthSquared: " << test.lengthSquared() << endl;
 }
 
 //--------------------------------------------------------------
