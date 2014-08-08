@@ -1,19 +1,25 @@
-#include "testApp.h"
+#include "testApp.h";
 
-;
+#define DEMO 0
 
 //--------------------------------------------------------------
 void testApp::setup(){
     
     ofEnableSmoothing();
-    
     ofSetFrameRate(30);
     
+#if DEMO
+    
     // For attraction demo
-    //demo.setupAttraction();
+    demo.setupAttraction();
+    
+#elseif
     
     // For verlet demo
     demo.setupVerlet();
+    
+#endif
+    
 }
 
 //--------------------------------------------------------------
@@ -27,6 +33,7 @@ void testApp::draw(){
     ofBackground(ofColor::black);
     
     for (short i = 0; i < demo.NUM_PARTICLES; i++) {
+        
         ofSetColor(
             demo.physic.particles[i].r,
             demo.physic.particles[i].g,
@@ -53,8 +60,6 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
-   // cout << "-->" << x << "-->" << y << endl;
-    
     demo.mouse.pos->set(x, y);
 }
 
@@ -65,8 +70,6 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    //theball.x = ofRandom(ofGetWindowWidth());
-    //theball.y = ofRandom(ofGetWindowHeight());
 }
 
 //--------------------------------------------------------------

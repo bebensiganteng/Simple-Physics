@@ -15,7 +15,7 @@ void Verlet::integrate(Particle p, float drag) {
     
     Vector pos;
     
-    float dt = 1.0/60;
+    float dt   = 1.0/60;
     float dtSq = dt * dt;
     
     if (!p.fixed) {
@@ -24,7 +24,6 @@ void Verlet::integrate(Particle p, float drag) {
         
         p.vel->set(p.pos->x, p.pos->y);
         p.vel->operator-=(*p.oldpos.pos);
-        
 
         p.acc->scale(dtSq);
         p.vel->operator+=(*p.acc);

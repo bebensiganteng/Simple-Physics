@@ -9,11 +9,10 @@
 #include "attraction.h"
 
 void Attraction::setup(Vector &_target, float _radius = 1000, float _strength = 100) {
-    target = &_target;
     
-    radius = _radius;
+    target   = &_target;
+    radius   = _radius;
     radiusSq = radius * radius;
-    
     strength = _strength;
 }
 

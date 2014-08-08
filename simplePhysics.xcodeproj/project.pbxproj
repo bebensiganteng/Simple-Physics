@@ -258,10 +258,10 @@
 				FE089632177F176A00C8B5C4 /* attraction.cpp */,
 				FE089633177F176A00C8B5C4 /* attraction.h */,
 				FE089635177F179C00C8B5C4 /* behaviour.cpp */,
-				FE089637177F179C00C8B5C4 /* collision.cpp */,
 				FE08963B177F179C00C8B5C4 /* edgeBounce.cpp */,
 				FE08963C177F179C00C8B5C4 /* edgeBounce.h */,
 				FE089638177F179C00C8B5C4 /* collision.h */,
+				FE089637177F179C00C8B5C4 /* collision.cpp */,
 				FE089636177F179C00C8B5C4 /* behaviour.h */,
 			);
 			name = behaviours;
@@ -329,6 +329,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "simplePhysics" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;

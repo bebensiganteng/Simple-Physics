@@ -14,8 +14,9 @@
 #include "integrator.h"
 
 class Verlet:public Integrator {
-    public:
-        void integrate(Particle p, float drag);
+    
+public:
+    void integrate(Particle p, float drag);
 };
 
 #endif /* defined(__emptyExample__verlet__) */

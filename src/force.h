@@ -9,7 +9,6 @@
 #ifndef __emptyExample__force__
 #define __emptyExample__force__
 
-#include <iostream>
 #include "behaviour.h"
 #include "vector.h"
 #include "particle.h"

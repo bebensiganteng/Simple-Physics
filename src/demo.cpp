@@ -12,16 +12,14 @@
 #define MASS 20
 
 short Demo::NUM_PARTICLES = 2;
-
-short Demo::CLOTH_SIZE = 10;
-short Demo::CLOTH_ROW = 50;
-short Demo::CLOTH_COLS = 50;
+short Demo::CLOTH_SIZE    = 10;
+short Demo::CLOTH_ROW     = 50;
+short Demo::CLOTH_COLS    = 50;
 
 Demo::Demo() {
     mouse.fixed = true;
-    mouse.pos = new Vector();
-    
-    scount = 0;
+    mouse.pos   = new Vector();
+    scount      = 0;
 }
 
 void Demo::setupAttraction() {
@@ -86,7 +84,7 @@ void Demo::setupVerlet() {
     physic.integrator = new Verlet();
     
     //weave particles
-    NUM_PARTICLES = CLOTH_ROW * CLOTH_COLS;
+    NUM_PARTICLES    = CLOTH_ROW * CLOTH_COLS;
     physic.particles = new Particle[NUM_PARTICLES];
     
     short sx = (ofGetWindowWidth() - (CLOTH_COLS * CLOTH_SIZE)) * 0.5;

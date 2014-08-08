@@ -17,11 +17,15 @@
 
 
 class Collision:public Behaviour {
-    public:
-        void apply(Particle p, Vector dt, short index);
+
+public:
     
-        Particle *pool;
-        Vector delta;
+    void apply(Particle p, Vector dt, short index);
+    
+private:
+    
+    Particle *pool;
+    Vector delta;
     
 };
 
