@@ -40,7 +40,7 @@ class Physics {
         vector<Spring> vSpring;
     
         float viscosity;
-        float timeStep;
+//        float timeStep;
     
         Particle *particles;
         Integrator *integrator;

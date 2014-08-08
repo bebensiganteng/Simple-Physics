@@ -16,8 +16,6 @@
 class Vector:public ofVec2f {
     public:
 
-        float mag();
-        float magSq();
         float cross(Vector v);
     
         Vector clone();
