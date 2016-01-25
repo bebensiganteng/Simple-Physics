@@ -10,4 +10,4 @@ There's a lot of robust C++ physics engine out there such as
 - http://box2d.org/
 
 For more info
-http://blog.bebensiganteng.com/?p=829
+http://bebensiganteng.com/index.php/2013/07/01/simple-physics-c/
